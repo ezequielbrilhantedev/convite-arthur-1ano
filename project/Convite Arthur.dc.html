@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #2d6ea3; font-family: 'Nunito', sans-serif; color: #4a2e17; -webkit-font-smoothing: antialiased; }
+  a { color: #e0503a; text-decoration: none; }
+  a:hover { color: #c23f2b; }
+  input { font-family: inherit; }
+  @keyframes drift { from { transform: translateX(-14px); } to { transform: translateX(14px); } }
+  @keyframes twinkle { 0%,100% { opacity: .3; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.15); } }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
+  @keyframes sway { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+  @keyframes flicker { 0%,100% { transform: scaleY(1) scaleX(1); opacity: .95; } 50% { transform: scaleY(.68) scaleX(1.05); opacity: 1; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes confetti-fall { 0% { transform: translateY(-24px) rotate(0deg); opacity: 1; } 100% { transform: translateY(340px) rotate(720deg); opacity: 0; } }
+  @keyframes pop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.07); } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes wave { 0%,100% { transform: rotate(8deg); } 50% { transform: rotate(28deg); } }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="max-width: 480px; margin: 0 auto; background: #fbf3e2; min-height: 100vh; overflow: hidden; box-shadow: 0 0 60px rgba(0,0,0,.35);">
+
+  <!-- ============ HERO ============ -->
+  <section data-screen-label="Hero" style="position: relative; padding: 34px 22px 46px; overflow: hidden; background: linear-gradient(#3f8fd0 0%, #6bb2e4 55%, #9ed4f0 100%);">
+
+    <!-- sun -->
+    <div style="position: absolute; top: 24px; left: 26px; width: 58px; height: 58px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffd766, #f4b93b); box-shadow: 0 0 0 6px rgba(244,185,59,.28); animation: floaty 6s ease-in-out infinite;"></div>
+
+    <!-- stars -->
+    <div style="position: absolute; top: 30px; right: 40px; width: 16px; height: 16px; background: #fdf3d0; clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation: twinkle 2.4s ease-in-out infinite;"></div>
+    <div style="position: absolute; top: 88px; right: 96px; width: 11px; height: 11px; background: #fdf3d0; clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation: twinkle 3.1s ease-in-out .5s infinite;"></div>
+    <div style="position: absolute; top: 150px; left: 30px; width: 13px; height: 13px; background: #fdf3d0; clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation: twinkle 2.7s ease-in-out .9s infinite;"></div>
+    <div style="position: absolute; top: 200px; right: 30px; width: 10px; height: 10px; background: #fdf3d0; clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation: twinkle 3.5s ease-in-out .3s infinite;"></div>
+
+    <!-- clouds -->
+    <div style="position: absolute; top: 66px; left: -10px; animation: drift 9s ease-in-out infinite alternate;">
+      <div style="position: relative; width: 96px; height: 34px; background: #fff; border-radius: 22px;">
+        <div style="position: absolute; top: -18px; left: 20px; width: 40px; height: 40px; background: #fff; border-radius: 50%;"></div>
+        <div style="position: absolute; top: -26px; left: 44px; width: 30px; height: 30px; background: #fff; border-radius: 50%;"></div>
+      </div>
+    </div>
+    <div style="position: absolute; top: 190px; left: 120px; animation: drift 12s ease-in-out 1s infinite alternate;">
+      <div style="position: relative; width: 74px; height: 26px; background: #ffffff; border-radius: 18px; opacity: .95;">
+        <div style="position: absolute; top: -14px; left: 16px; width: 32px; height: 32px; background: #fff; border-radius: 50%;"></div>
+      </div>
+    </div>
+
+    <!-- toy sign header -->
+    <div style="position: relative; text-align: center; padding-top: 14px;">
+      <div style="display: inline-block; background: #e0503a; color: #fff5df; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; padding: 7px 20px; border-radius: 40px; box-shadow: 0 4px 0 #a83322; animation: rise .6s ease both;">Você foi convidado</div>
+
+      <h1 style="margin: 22px 0 0; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 82px; line-height: .92; color: #fbf3e2; -webkit-text-stroke: 4px #7c451f; paint-order: stroke fill; text-shadow: 0 7px 0 #7c451f, 0 10px 14px rgba(0,0,0,.28); animation: rise .6s ease .1s both;">Arthur</h1>
+
+      <p style="margin: 20px 0 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 25px; color: #fff5df; text-shadow: 0 2px 6px rgba(0,0,0,.28); animation: rise .6s ease .2s both;">está completando <span style="color: #f4b93b;">1 aninho!</span></p>
+    </div>
+
+    <!-- central illustration: little cowboy (Arthur's photo) + rocket + planet -->
+    <div style="position: relative; height: 250px; margin-top: 14px;">
+
+      <!-- ringed planet -->
+      <div style="position: absolute; top: 2px; right: 16px; animation: floaty 7s ease-in-out .4s infinite;">
+        <div style="position: relative; width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle at 32% 30%, #f4b93b, #d98b2b); border: 3px solid #7c451f;"></div>
+        <div style="position: absolute; top: 50%; left: 50%; width: 70px; height: 20px; border: 4px solid #e0503a; border-radius: 50%; transform: translate(-50%,-50%) rotate(-20deg);"></div>
+      </div>
+
+      <!-- rocket -->
+      <div style="position: absolute; left: 6px; top: 8px; transform: scale(.78); transform-origin: top left;">
+        <div style="animation: floaty 4.5s ease-in-out infinite;">
+          <div style="position: relative; width: 84px; height: 133px">
+            <div style="position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 0; height: 0; border-left: 22px solid transparent; border-right: 22px solid transparent; border-bottom: 30px solid #e0503a;"></div>
+            <div style="position: absolute; left: 50%; top: 26px; transform: translateX(-50%); width: 44px; height: 74px; background: linear-gradient(#fefaf0,#f2e6cf); border: 3px solid #7c451f; border-radius: 22px 22px 16px 16px;"></div>
+            <div style="position: absolute; left: 50%; top: 40px; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #8fd0f2, #3f8fd0); border: 3px solid #7c451f;"></div>
+            <div style="position: absolute; left: 50%; top: 74px; transform: translateX(-50%); width: 44px; height: 12px; background: #f4b93b;"></div>
+            <div style="position: absolute; left: 4px; top: 78px; width: 0; height: 0; border-top: 22px solid transparent; border-right: 16px solid #e0503a;"></div>
+            <div style="position: absolute; right: 4px; top: 78px; width: 0; height: 0; border-top: 22px solid transparent; border-left: 16px solid #e0503a;"></div>
+            <div style="position: absolute; left: 50%; top: 100px; transform: translateX(-50%); width: 20px; height: 26px; background: radial-gradient(circle at 50% 20%, #ffd766, #f4b93b); border-radius: 0 0 50% 50%; animation: flicker .5s ease-in-out infinite;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- little cowboy with Arthur's photo (3D toy style) -->
+      <div style="position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);">
+        <div style="animation: sway 5s ease-in-out infinite; transform-origin: bottom center; filter: drop-shadow(0 10px 7px rgba(0,0,0,.22));">
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- countdown -->
+    <div style="position: relative; margin-top: 6px;">
+      <p style="text-align: center; margin: 0 0 12px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; color: #fff5df; letter-spacing: 1px; text-shadow: 0 1px 4px rgba(0,0,0,.25);">A FESTA COMEÇA EM</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px;">
+        <div style="background: #7c451f; border: 3px solid #5c3315; border-radius: 16px; padding: 12px 4px; text-align: center; box-shadow: 0 5px 0 #4a2810;">
+          <div style="font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 30px; color: #fbf3e2; line-height: 1;">{{ days }}</div>
+          <div style="font-size: 11px; font-weight: 700; color: #f4b93b; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px;">Dias</div>
+        </div>
+        <div style="background: #7c451f; border: 3px solid #5c3315; border-radius: 16px; padding: 12px 4px; text-align: center; box-shadow: 0 5px 0 #4a2810;">
+          <div style="font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 30px; color: #fbf3e2; line-height: 1;">{{ hours }}</div>
+          <div style="font-size: 11px; font-weight: 700; color: #f4b93b; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px;">Horas</div>
+        </div>
+        <div style="background: #7c451f; border: 3px solid #5c3315; border-radius: 16px; padding: 12px 4px; text-align: center; box-shadow: 0 5px 0 #4a2810;">
+          <div style="font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 30px; color: #fbf3e2; line-height: 1;">{{ mins }}</div>
+          <div style="font-size: 11px; font-weight: 700; color: #f4b93b; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px;">Min</div>
+        </div>
+        <div style="background: #7c451f; border: 3px solid #5c3315; border-radius: 16px; padding: 12px 4px; text-align: center; box-shadow: 0 5px 0 #4a2810;">
+          <div style="font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 30px; color: #fbf3e2; line-height: 1;">{{ secs }}</div>
+          <div style="font-size: 11px; font-weight: 700; color: #f4b93b; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px;">Seg</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUANDO E ONDE ============ -->
+  <section data-screen-label="Quando e onde" style="padding: 40px 22px 34px; background: #fbf3e2;">
+    <h2 style="text-align: center; margin: 0 0 22px; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 30px; color: #e0503a;">Quando &amp; Onde</h2>
+
+    <div style="background: #fff; border: 3px solid #7c451f; border-radius: 22px; padding: 24px 22px; box-shadow: 0 6px 0 #d9c7a0;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="flex: 0 0 auto; width: 58px; height: 58px; border-radius: 14px; background: #3f8fd0; border: 3px solid #7c451f; display: flex; flex-direction: column; overflow: hidden;">
+          <div style="background: #e0503a; height: 16px;"></div>
+          <div style="flex: 1; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 24px; color: #fff;">12</div>
+        </div>
+        <div>
+          <div style="font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; color: #4a2e17;">Sábado, 12 de setembro</div>
+          <div style="font-size: 15px; color: #8a6a44; font-weight: 700;">de 2026 · às 16h</div>
+        </div>
+      </div>
+
+      <div style="height: 2px; background: repeating-linear-gradient(90deg,#e6d6b3 0 8px,transparent 8px 16px); margin: 20px 0;"></div>
+
+      <div style="display: flex; align-items: flex-start; gap: 16px;">
+        <div style="flex: 0 0 auto; width: 58px; height: 58px; border-radius: 14px; background: #f4b93b; border: 3px solid #7c451f; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 20px; height: 26px; background: #e0503a; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; position: relative;"><div style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; border-radius: 50%; background: #fff;"></div></div>
+        </div>
+        <div>
+          <div style="font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; color: #4a2e17;">[Nome do Local]</div>
+          <div style="font-size: 14px; color: #8a6a44; line-height: 1.4; margin-top: 2px;">[Endereço completo do evento — rua, número, bairro e cidade]</div>
+        </div>
+      </div>
+
+      <a href="https://maps.google.com/?q=Endere%C3%A7o%20do%20evento%20Arthur" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 22px; background: #3f8fd0; color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 17px; padding: 15px; border-radius: 40px; border: 3px solid #2d6ea3; box-shadow: 0 5px 0 #235880;">
+        <span style="width: 14px; height: 14px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 6px 0 -3px #fff;"></span>
+        Ver localização
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ RSVP ============ -->
+  <section data-screen-label="Confirme presença" style="padding: 8px 22px 38px; background: #fbf3e2;">
+    <h2 style="text-align: center; margin: 0 0 6px; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 30px; color: #e0503a;">Confirme sua presença</h2>
+    <p style="text-align: center; margin: 0 0 22px; font-size: 15px; color: #8a6a44; font-weight: 600;">Sua presença é o melhor presente pro Arthur! 🤠</p>
+
+    <div style="position: relative; background: #fff; border: 3px solid #7c451f; border-radius: 22px; padding: 24px 22px; box-shadow: 0 6px 0 #d9c7a0; overflow: hidden; min-height: 300px;">
+
+      <!-- FORM -->
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}">
+          <label style="display: block; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; color: #4a2e17; margin-bottom: 7px;">Seu nome</label>
+          <input value="{{ name }}" onChange="{{ onName }}" placeholder="Digite seu nome" style="width: 100%; padding: 14px 16px; font-size: 16px; border: 3px solid #e6d6b3; border-radius: 14px; background: #fdf9ef; color: #4a2e17; outline: none;" style-focus="width: 100%; padding: 14px 16px; font-size: 16px; border: 3px solid #3f8fd0; border-radius: 14px; background: #fff; color: #4a2e17; outline: none;">
+
+          <label style="display: block; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; color: #4a2e17; margin: 20px 0 7px;">Quantos acompanhantes?</label>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <button type="button" onClick="{{ dec }}" style="width: 52px; height: 52px; border-radius: 14px; border: 3px solid #7c451f; background: #f4b93b; color: #7c451f; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 28px; line-height: 1; cursor: pointer; box-shadow: 0 4px 0 #c99327;">−</button>
+            <div style="flex: 1; text-align: center; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 32px; color: #4a2e17;">{{ guests }}</div>
+            <button type="button" onClick="{{ inc }}" style="width: 52px; height: 52px; border-radius: 14px; border: 3px solid #7c451f; background: #f4b93b; color: #7c451f; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 28px; line-height: 1; cursor: pointer; box-shadow: 0 4px 0 #c99327;">+</button>
+          </div>
+
+          <button type="submit" style="width: 100%; margin-top: 24px; background: #e0503a; color: #fff5df; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; padding: 16px; border-radius: 40px; border: 3px solid #a83322; box-shadow: 0 5px 0 #a83322; cursor: pointer;">Eu vou! Confirmar 🎉</button>
+        </form>
+      </sc-if>
+
+      <!-- SUCCESS -->
+      <sc-if value="{{ confirmed }}" hint-placeholder-val="{{ false }}">
+        <div style="position: relative; z-index: 2; text-align: center; padding: 16px 4px; animation: pop .5s ease both;">
+          <div style="width: 76px; height: 76px; margin: 0 auto; border-radius: 50%; background: #8fbf5a; border: 4px solid #5f8a34; display: flex; align-items: center; justify-content: center;">
+            <div style="width: 30px; height: 16px; border-left: 6px solid #fff; border-bottom: 6px solid #fff; transform: rotate(-45deg) translate(2px,-3px); border-radius: 2px;"></div>
+          </div>
+          <h3 style="margin: 18px 0 6px; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 26px; color: #5f8a34;">Presença confirmada!</h3>
+          <p style="margin: 0; font-size: 16px; color: #4a2e17; font-weight: 600;">Obrigado, <strong>{{ name }}</strong>! 🎈<br>{{ guestLabel }}</p>
+          <p style="margin: 14px 0 0; font-size: 15px; color: #8a6a44;">Até dia 12 de setembro! 🚀</p>
+          <button type="button" onClick="{{ reset }}" style="margin-top: 20px; background: transparent; color: #3f8fd0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; padding: 8px 16px; border: none; text-decoration: underline; cursor: pointer;">Editar confirmação</button>
+        </div>
+        <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none;">
+          <sc-for list="{{ confetti }}" as="c" hint-placeholder-count="0">
+            <div style="position: absolute; top: 0; left: {{ c.left }}%; width: {{ c.size }}px; height: {{ c.size }}px; background: {{ c.color }}; border-radius: 2px; transform: rotate({{ c.rot }}deg); animation: confetti-fall {{ c.dur }}s ease-in {{ c.delay }}s forwards;"></div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ============ PRESENTE ============ -->
+  <section data-screen-label="Sugestão de presente" style="padding: 8px 22px 40px; background: #fbf3e2;">
+    <h2 style="text-align: center; margin: 0 0 6px; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 30px; color: #e0503a;">Sugestão de presente</h2>
+    <p style="text-align: center; margin: 0 0 22px; font-size: 15px; color: #8a6a44; font-weight: 600;">Se quiser mimar o cowboy, aqui vão as ideias</p>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <sc-if value="{{ showPix }}" hint-placeholder-val="{{ true }}">
+        <div style="background: #3f8fd0; border: 3px solid #2d6ea3; border-radius: 22px; padding: 22px; box-shadow: 0 6px 0 #235880;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: #fff5df; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka', sans-serif; font-weight: 700; color: #3f8fd0; font-size: 20px;">$</div>
+            <h3 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; color: #fff;">Prefere ajudar via PIX</h3>
+          </div>
+          <p style="margin: 14px 0 8px; color: #eaf5ff; font-size: 14px;">Toda contribuição vira sonho pro Arthur crescer. Chave PIX:</p>
+          <div style="background: #fff; border-radius: 12px; padding: 13px 16px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16px; color: #2d6ea3; text-align: center; letter-spacing: .5px;">[chave-pix@email.com]</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showStore }}" hint-placeholder-val="{{ true }}">
+        <a href="#" target="_blank" rel="noopener" style="display: block; background: #f4b93b; border: 3px solid #c99327; border-radius: 22px; padding: 22px; box-shadow: 0 6px 0 #c99327;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 40px; height: 40px; border-radius: 12px; background: #7c451f; display: flex; align-items: center; justify-content: center;">
+              <div style="width: 16px; height: 14px; border: 3px solid #fff5df; border-top: none; border-radius: 0 0 4px 4px; position: relative;"><div style="position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 12px; height: 8px; border: 3px solid #fff5df; border-bottom: none; border-radius: 8px 8px 0 0;"></div></div>
+            </div>
+            <h3 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; color: #4a2e17;">Lista de presentes</h3>
+          </div>
+          <p style="margin: 14px 0 0; color: #6e4a22; font-size: 14px;">Escolha um mimo na nossa listinha na loja <strong>[Nome da loja]</strong> → toque para abrir.</p>
+        </a>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer data-screen-label="Footer" style="position: relative; background: linear-gradient(#9ed4f0 0%, #6bb2e4 100%); padding: 40px 22px 46px; text-align: center; overflow: hidden;">
+    <div style="position: absolute; bottom: 20px; left: 20px; width: 12px; height: 12px; background: #fdf3d0; clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation: twinkle 3s ease-in-out infinite;"></div>
+    <div style="position: absolute; top: 30px; right: 26px; width: 10px; height: 10px; background: #fdf3d0; clip-path: polygon(50% 0,61% 35%,98% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); animation: twinkle 2.5s ease-in-out .6s infinite;"></div>
+    <div style="font-size: 34px; margin-bottom: 8px;">🤠🚀</div>
+    <p style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; color: #fff5df; text-shadow: 0 2px 6px rgba(0,0,0,.2);">Com carinho,</p>
+    <p style="margin: 4px 0 0; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 26px; color: #7c451f;">a família do Arthur</p>
+    <p style="margin: 16px 0 0; font-size: 13px; color: #f0f8ff; opacity: .8;">Ao infinito e além!✨</p>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 390, &quot;height&quot;: 860 },
+  &quot;giftMode&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;PIX&quot;, &quot;Lista de loja&quot;, &quot;Ambos&quot;], &quot;default&quot;: &quot;Ambos&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Presente&quot; },
+  &quot;confettiPalette&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: [&quot;#e0503a&quot;, &quot;#f4b93b&quot;, &quot;#3f8fd0&quot;, &quot;#fff5df&quot;, &quot;#8fbf5a&quot;], &quot;tsType&quot;: &quot;string[]&quot;, &quot;section&quot;: &quot;Confete&quot; }
+}">
+class Component extends DCLogic {
+  target = new Date(2026, 8, 12, 16, 0, 0).getTime();
+  state = { now: Date.now(), name: '', guests: 0, confirmed: false };
+
+  componentDidMount() {
+    this._t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+  }
+  componentWillUnmount() {
+    if (this._t) clearInterval(this._t);
+  }
+
+  buildConfetti(pal) {
+    return Array.from({ length: 46 }, (_, i) => ({
+      left: Math.round(Math.random() * 100),
+      delay: (Math.random() * 0.5).toFixed(2),
+      dur: (1.7 + Math.random() * 1.4).toFixed(2),
+      color: pal[i % pal.length],
+      size: 8 + Math.round(Math.random() * 9),
+      rot: Math.round(Math.random() * 360),
+    }));
+  }
+
+  renderVals() {
+    const pal = (Array.isArray(this.props.confettiPalette) && this.props.confettiPalette.length)
+      ? this.props.confettiPalette
+      : ['#e0503a', '#f4b93b', '#3f8fd0', '#fff5df', '#8fbf5a'];
+    const key = pal.join(',');
+    if (this._key !== key) { this._key = key; this._confetti = this.buildConfetti(pal); }
+
+    const diff = Math.max(0, this.target - this.state.now);
+    const s = Math.floor(diff / 1000);
+    const pad = (n) => String(n).padStart(2, '0');
+
+    const g = this.state.guests;
+    const guestLabel = g === 0
+      ? 'Você vai sozinho(a) — te esperamos!'
+      : 'Você + ' + g + (g === 1 ? ' acompanhante' : ' acompanhantes');
+
+    const mode = this.props.giftMode || 'Ambos';
+
+    return {
+      days: pad(Math.floor(s / 86400)),
+      hours: pad(Math.floor((s % 86400) / 3600)),
+      mins: pad(Math.floor((s % 3600) / 60)),
+      secs: pad(s % 60),
+      name: this.state.name,
+      guests: g,
+      guestLabel,
+      confirmed: this.state.confirmed,
+      showForm: !this.state.confirmed,
+      confetti: this._confetti,
+      showPix: mode === 'PIX' || mode === 'Ambos',
+      showStore: mode === 'Lista de loja' || mode === 'Ambos',
+      onName: (e) => this.setState({ name: e.target.value }),
+      inc: () => this.setState((st) => ({ guests: Math.min(20, st.guests + 1) })),
+      dec: () => this.setState((st) => ({ guests: Math.max(0, st.guests - 1) })),
+      submit: (e) => { e.preventDefault(); if (!this.state.name.trim()) return; this.setState({ confirmed: true }); },
+      reset: () => this.setState({ confirmed: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>
