@@ -1,10 +1,13 @@
 import { useMemo, useState } from 'react';
 import { buildConfetti } from '../lib/confetti';
+import { submitRsvp } from '../lib/rsvp';
 
 export function Rsvp() {
   const [name, setName] = useState('');
   const [guests, setGuests] = useState(0);
   const [confirmed, setConfirmed] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
   const confetti = useMemo(() => buildConfetti(), [confirmed]);
 
   const guestLabel =
@@ -12,10 +15,19 @@ export function Rsvp() {
       ? 'Você vai sozinho(a) — te esperamos!'
       : `Você + ${guests}${guests === 1 ? ' acompanhante' : ' acompanhantes'}`;
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim()) return;
-    setConfirmed(true);
+    if (!name.trim() || submitting) return;
+    setSubmitting(true);
+    setError(false);
+    try {
+      await submitRsvp({ name: name.trim(), guests });
+      setConfirmed(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -70,11 +82,18 @@ export function Rsvp() {
 
             <button
               type="submit"
-              className="mt-6 w-full cursor-pointer rounded-[40px] py-4 font-[Fredoka] text-[19px] font-semibold text-[#fff5df]"
+              disabled={submitting}
+              className="mt-6 w-full cursor-pointer rounded-[40px] py-4 font-[Fredoka] text-[19px] font-semibold text-[#fff5df] disabled:cursor-not-allowed disabled:opacity-70"
               style={{ background: '#e0503a', border: '3px solid #a83322', boxShadow: '0 5px 0 #a83322' }}
             >
-              Eu vou! Confirmar 🎉
+              {submitting ? 'Enviando…' : 'Eu vou! Confirmar 🎉'}
             </button>
+
+            {error && (
+              <p className="mt-3 text-center text-sm font-semibold text-[#c23f2b]">
+                Ops, não consegui enviar. Confira sua conexão e toque em confirmar de novo.
+              </p>
+            )}
           </form>
         )}
 

@@ -14,14 +14,16 @@ abre pelo WhatsApp).
 - **Quando & Onde** — data/horário e local, com botão "Ver localização" que abre o
   Google Maps.
 - **Confirme sua presença** — formulário de RSVP (nome + acompanhantes) com confete
-  e tela de sucesso ao confirmar.
+  e tela de sucesso ao confirmar; as confirmações são gravadas numa planilha do
+  Google (ver abaixo).
 - **Sugestão de presente** — cartão de PIX e cartão de lista de presentes.
 - **Footer** — "Com carinho, a família do Arthur".
 
 ## Stack
 
-React + TypeScript + Tailwind CSS (Vite). Sem backend — o RSVP usa estado local
-(pode ser integrado ao Supabase depois para salvar as confirmações).
+React + TypeScript + Tailwind CSS (Vite). Sem backend — as confirmações de
+presença são enviadas direto do navegador para uma planilha do Google, via um
+Google Apps Script (código em [`apps-script/Code.gs`](./apps-script/Code.gs)).
 
 ## Como rodar
 
@@ -39,6 +41,10 @@ Alguns campos estão marcados com colchetes e precisam dos valores reais:
 - Nome e endereço do local (e o link do Google Maps em `src/components/WhenWhere.tsx`)
 - Chave PIX (`src/components/GiftSuggestion.tsx`)
 - Link da lista de presentes (`src/components/GiftSuggestion.tsx`)
+
+E para registrar as confirmações, configure a variável `VITE_RSVP_ENDPOINT`
+apontando para o Google Apps Script — o passo a passo completo está em
+[`site/README.md`](./site/README.md).
 
 ## Sobre o design original
 
