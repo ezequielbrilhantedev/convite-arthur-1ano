@@ -5,6 +5,7 @@ import { submitRsvp } from '../lib/rsvp';
 export function Rsvp() {
   const [name, setName] = useState('');
   const [guests, setGuests] = useState(0);
+  const [companionNames, setCompanionNames] = useState<string[]>([]);
   const [confirmed, setConfirmed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
@@ -15,13 +16,33 @@ export function Rsvp() {
       ? 'Você vai sozinho(a) — te esperamos!'
       : `Você + ${guests}${guests === 1 ? ' acompanhante' : ' acompanhantes'}`;
 
+  const filledCompanionNames = companionNames.map((n) => n.trim()).filter(Boolean);
+
+  const updateGuests = (next: number) => {
+    const clamped = Math.max(0, Math.min(20, next));
+    setGuests(clamped);
+    setCompanionNames((names) => {
+      const copy = names.slice(0, clamped);
+      while (copy.length < clamped) copy.push('');
+      return copy;
+    });
+  };
+
+  const updateCompanionName = (index: number, value: string) => {
+    setCompanionNames((names) => {
+      const copy = [...names];
+      copy[index] = value;
+      return copy;
+    });
+  };
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || submitting) return;
     setSubmitting(true);
     setError(false);
     try {
-      await submitRsvp({ name: name.trim(), guests });
+      await submitRsvp({ name: name.trim(), guests, companionNames: filledCompanionNames });
       setConfirmed(true);
     } catch {
       setError(true);
@@ -61,7 +82,7 @@ export function Rsvp() {
             <div className="flex items-center gap-3.5">
               <button
                 type="button"
-                onClick={() => setGuests((g) => Math.max(0, g - 1))}
+                onClick={() => updateGuests(guests - 1)}
                 className="h-[52px] w-[52px] cursor-pointer rounded-[14px] font-[Fredoka] text-[28px] leading-none font-bold text-[#7c451f]"
                 style={{ background: '#f4b93b', border: '3px solid #7c451f', boxShadow: '0 4px 0 #c99327' }}
               >
@@ -72,13 +93,27 @@ export function Rsvp() {
               </div>
               <button
                 type="button"
-                onClick={() => setGuests((g) => Math.min(20, g + 1))}
+                onClick={() => updateGuests(guests + 1)}
                 className="h-[52px] w-[52px] cursor-pointer rounded-[14px] font-[Fredoka] text-[28px] leading-none font-bold text-[#7c451f]"
                 style={{ background: '#f4b93b', border: '3px solid #7c451f', boxShadow: '0 4px 0 #c99327' }}
               >
                 +
               </button>
             </div>
+
+            {guests > 0 && (
+              <div className="mt-3.5 flex flex-col gap-3">
+                {companionNames.map((value, i) => (
+                  <input
+                    key={i}
+                    value={value}
+                    onChange={(e) => updateCompanionName(i, e.target.value)}
+                    placeholder={`Nome do acompanhante ${i + 1}`}
+                    className="w-full rounded-[14px] border-[3px] border-[#e6d6b3] bg-[#fdf9ef] px-4 py-[14px] text-base text-[#4a2e17] outline-none focus:border-[#3f8fd0] focus:bg-white"
+                  />
+                ))}
+              </div>
+            )}
 
             <button
               type="submit"
@@ -126,6 +161,9 @@ export function Rsvp() {
                 <br />
                 {guestLabel}
               </p>
+              {filledCompanionNames.length > 0 && (
+                <p className="mt-1.5 mb-0 text-sm text-[#8a6a44]">{filledCompanionNames.join(', ')}</p>
+              )}
               <p className="mt-3.5 mb-0 text-[15px] text-[#8a6a44]">Até dia 12 de setembro! 🚀</p>
               <button
                 type="button"

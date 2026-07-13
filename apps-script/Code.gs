@@ -12,7 +12,7 @@
  *      (no .env local e nas Environment Variables da Vercel).
  *
  * O formulário envia um POST com Content-Type: text/plain e corpo JSON
- * { "name": "...", "guests": 0 }.
+ * { "name": "...", "guests": 0, "companionNames": [] }.
  */
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -22,14 +22,19 @@ function doPost(e) {
     var sheet = ss.getSheetByName('RSVPs') || ss.insertSheet('RSVPs');
 
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Data/Hora', 'Nome', 'Acompanhantes', 'Total de pessoas']);
+      sheet.appendRow(['Data/Hora', 'Nome', 'Acompanhantes', 'Total de pessoas', 'Nomes dos acompanhantes']);
     }
 
     var data = JSON.parse(e.postData.contents);
     var name = String(data.name || '').trim();
     var guests = Number(data.guests) || 0;
+    var companionNames = Array.isArray(data.companionNames) ? data.companionNames : [];
+    var companionNamesStr = companionNames
+      .map(function (n) { return String(n || '').trim(); })
+      .filter(function (n) { return n; })
+      .join(', ');
 
-    sheet.appendRow([new Date(), name, guests, guests + 1]);
+    sheet.appendRow([new Date(), name, guests, guests + 1, companionNamesStr]);
 
     return ContentService
       .createTextOutput(JSON.stringify({ ok: true }))

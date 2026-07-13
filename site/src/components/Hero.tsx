@@ -105,7 +105,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
       </div>
 
       {/* central illustration: rocket + ringed planet + cowboy toy (Arthur's face) */}
-      <div className="relative mt-[14px] h-[250px]">
+      <div className="relative mt-[50px] h-[250px]">
         {/* ringed planet */}
         <div
           className="absolute top-[2px] right-4"

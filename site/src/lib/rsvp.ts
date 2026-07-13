@@ -1,6 +1,7 @@
 export interface RsvpPayload {
   name: string;
   guests: number;
+  companionNames: string[];
 }
 
 /**
