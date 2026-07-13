@@ -1,25 +1,48 @@
-# CODING AGENTS: READ THIS FIRST
+# Convite de aniversário do Arthur 🤠🚀
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Landing page de convite para a festa de **1 aninho do Arthur** — tema brinquedos
+vintage estilo cowboy + ranger espacial, mobile-first (a maioria dos convidados
+abre pelo WhatsApp).
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+**Data:** 12 de setembro de 2026, às 16h.
 
-## What you should do — IMPORTANT
+## Seções
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+- **Hero** — céu animado (sol, estrelinhas piscando, nuvens), título "Arthur" em
+  letreiro de brinquedo, contagem regressiva ao vivo, foguete + planeta com anel e
+  um boneco caubói de brinquedo com o rostinho do Arthur.
+- **Quando & Onde** — data/horário e local, com botão "Ver localização" que abre o
+  Google Maps.
+- **Confirme sua presença** — formulário de RSVP (nome + acompanhantes) com confete
+  e tela de sucesso ao confirmar.
+- **Sugestão de presente** — cartão de PIX e cartão de lista de presentes.
+- **Footer** — "Com carinho, a família do Arthur".
 
-**Read `project/Convite Arthur.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+## Stack
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+React + TypeScript + Tailwind CSS (Vite). Sem backend — o RSVP usa estado local
+(pode ser integrado ao Supabase depois para salvar as confirmações).
 
-## About the design files
+## Como rodar
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+```bash
+cd site
+npm install
+npm run dev      # servidor de desenvolvimento
+npm run build    # build de produção em site/dist
+```
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+## Preencher antes de publicar
 
-## Bundle contents
+Alguns campos estão marcados com colchetes e precisam dos valores reais:
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Landing page aniversário Arthur` project files (HTML prototypes, assets, components)
+- Nome e endereço do local (e o link do Google Maps em `src/components/WhenWhere.tsx`)
+- Chave PIX (`src/components/GiftSuggestion.tsx`)
+- Link da lista de presentes (`src/components/GiftSuggestion.tsx`)
+
+## Sobre o design original
+
+Este projeto foi implementado a partir de um handoff do Claude Design — os
+transcritos e protótipos originais estão em `chats/` e `project/`, e as instruções
+do handoff em [`HANDOFF.md`](./HANDOFF.md). O boneco caubói é uma **ilustração
+original** (não reproduz personagens registrados), com a foto do Arthur no rosto.
