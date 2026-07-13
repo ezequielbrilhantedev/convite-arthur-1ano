@@ -3,6 +3,7 @@ import { WhenWhere } from './components/WhenWhere';
 import { Rsvp } from './components/Rsvp';
 import { GiftSuggestion } from './components/GiftSuggestion';
 import { Footer } from './components/Footer';
+import { Soundtrack } from './components/Soundtrack';
 import { useCountdown } from './hooks/useCountdown';
 
 const PARTY_TARGET = new Date(2026, 8, 12, 16, 0, 0).getTime();
@@ -20,6 +21,7 @@ function App() {
       <Rsvp />
       <GiftSuggestion />
       <Footer />
+      <Soundtrack />
     </div>
   );
 }
