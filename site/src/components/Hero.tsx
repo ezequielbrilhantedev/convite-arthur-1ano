@@ -60,7 +60,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
         duration="9s"
       />
       <Cloud
-        wrapperStyle={{ top: 190, left: 120 }}
+        wrapperStyle={{ top: 14, right: -16 }}
         width={74}
         height={26}
         borderRadius={18}
