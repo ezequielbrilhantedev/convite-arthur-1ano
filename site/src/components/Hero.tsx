@@ -1,5 +1,6 @@
 import { Star } from "./Star";
 import { Cloud } from "./Cloud";
+import { ScrollHint } from "./ScrollHint";
 import arthurPersonagem from "../assets/arthur-personagem.png";
 import type { Countdown } from "../hooks/useCountdown";
 
@@ -259,6 +260,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
             </div>
           ))}
         </div>
+        <ScrollHint />
       </div>
     </section>
   );
