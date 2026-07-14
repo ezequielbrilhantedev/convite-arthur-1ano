@@ -2,6 +2,8 @@ import { Star } from "./Star";
 import { Cloud } from "./Cloud";
 import { ScrollHint } from "./ScrollHint";
 import arthurPersonagem from "../assets/arthur-personagem.png";
+import foguete from "../assets/foguete.jpg";
+import bola from "../assets/bola.jpeg";
 import type { Countdown } from "../hooks/useCountdown";
 
 const CELL_LABELS: Array<[keyof Countdown, string]> = [
@@ -70,9 +72,9 @@ export function Hero({ countdown }: { countdown: Countdown }) {
       />
 
       {/* toy sign header */}
-      <div className="relative pt-[14px] text-center">
+      <div className="relative pt-2 text-center pb-18">
         <div
-          className="inline-block rounded-[40px] px-5 py-[7px] font-[Fredoka] text-[13px] font-semibold tracking-[2px] text-[#fff5df] uppercase"
+          className="inline-block rounded-[40px] px-5 py-1.75 font-[Fredoka] text-[13px] font-semibold tracking-[2px] text-[#fff5df] uppercase"
           style={{
             background: "#e0503a",
             boxShadow: "0 4px 0 #a83322",
@@ -83,7 +85,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
         </div>
 
         <h1
-          className="m-0 mt-[22px] font-[Fredoka] text-[82px] leading-[.92] font-bold text-[#fbf3e2]"
+          className="m-0 mt-2.5 font-[Fredoka] text-[82px] leading-[.92] font-bold text-[#fbf3e2]"
           style={{
             WebkitTextStroke: "4px #7c451f",
             paintOrder: "stroke fill",
@@ -112,101 +114,33 @@ export function Hero({ countdown }: { countdown: Countdown }) {
           className="absolute top-[2px] right-4"
           style={{ animation: "floaty 7s ease-in-out .4s infinite" }}
         >
-          <div
-            className="relative h-11 w-11 rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle at 32% 30%, #f4b93b, #d98b2b)",
-              border: "3px solid #7c451f",
-            }}
-          />
-          <div
-            className="absolute top-1/2 left-1/2 h-5 w-[70px] rounded-full"
-            style={{
-              border: "4px solid #e0503a",
-              transform: "translate(-50%,-50%) rotate(-20deg)",
-            }}
-          />
+          <div style={{ mixBlendMode: "multiply" }}>
+            <img
+              src={bola}
+              alt="bola"
+              className="block h-24 w-24 select-none"
+              style={{
+                animation: "spin 16s linear infinite",
+                filter: "drop-shadow(0 4px 6px rgba(0,0,0,.22))",
+              }}
+              draggable={false}
+            />
+          </div>
         </div>
 
         {/* rocket */}
-        <div
-          className="absolute top-2 left-[6px] origin-top-left"
-          style={{ transform: "scale(.78)" }}
-        >
+        <div className="absolute top-2 left-[6px]">
           <div style={{ animation: "floaty 4.5s ease-in-out infinite" }}>
-            <div className="relative" style={{ width: 84, height: 133 }}>
-              <div
-                className="absolute top-0 left-1/2"
-                style={{
-                  transform: "translateX(-50%)",
-                  width: 0,
-                  height: 0,
-                  borderLeft: "22px solid transparent",
-                  borderRight: "22px solid transparent",
-                  borderBottom: "30px solid #e0503a",
-                }}
-              />
-              <div
-                className="absolute left-1/2 top-[26px] rounded-[22px_22px_16px_16px]"
-                style={{
-                  transform: "translateX(-50%)",
-                  width: 44,
-                  height: 74,
-                  background: "linear-gradient(#fefaf0,#f2e6cf)",
-                  border: "3px solid #7c451f",
-                }}
-              />
-              <div
-                className="absolute left-1/2 top-10 rounded-full"
-                style={{
-                  transform: "translateX(-50%)",
-                  width: 22,
-                  height: 22,
-                  background:
-                    "radial-gradient(circle at 35% 35%, #8fd0f2, #3f8fd0)",
-                  border: "3px solid #7c451f",
-                }}
-              />
-              <div
-                className="absolute left-1/2 top-[74px]"
-                style={{
-                  transform: "translateX(-50%)",
-                  width: 44,
-                  height: 12,
-                  background: "#f4b93b",
-                }}
-              />
-              <div
-                className="absolute left-1 top-[78px]"
-                style={{
-                  width: 0,
-                  height: 0,
-                  borderTop: "22px solid transparent",
-                  borderRight: "16px solid #e0503a",
-                }}
-              />
-              <div
-                className="absolute right-1 top-[78px]"
-                style={{
-                  width: 0,
-                  height: 0,
-                  borderTop: "22px solid transparent",
-                  borderLeft: "16px solid #e0503a",
-                }}
-              />
-              <div
-                className="absolute left-1/2 top-[100px] rounded-b-[50%]"
-                style={{
-                  transform: "translateX(-50%)",
-                  width: 20,
-                  height: 26,
-                  background:
-                    "radial-gradient(circle at 50% 20%, #ffd766, #f4b93b)",
-                  animation: "flicker .5s ease-in-out infinite",
-                }}
-              />
-            </div>
+            <img
+              src={foguete}
+              alt="Foguete"
+              className="block h-24 w-auto select-none"
+              style={{
+                mixBlendMode: "multiply",
+                filter: "drop-shadow(0 6px 8px rgba(0,0,0,.25))",
+              }}
+              draggable={false}
+            />
           </div>
         </div>
 
@@ -225,7 +159,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
             <img
               src={arthurPersonagem}
               alt="Arthur cowboy"
-              className="block h-[280px] w-auto select-none"
+              className="block h-96 w-auto select-none"
               draggable={false}
             />
           </div>
