@@ -118,7 +118,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
             <img
               src={bola}
               alt="bola"
-              className="block h-24 w-24 select-none"
+              className="block h-20 w-20 select-none"
               style={{
                 animation: "spin 16s linear infinite",
                 filter: "drop-shadow(0 4px 6px rgba(0,0,0,.22))",
