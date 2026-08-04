@@ -33,6 +33,9 @@ export function Footer() {
       <p className="mt-4 mb-0 text-[13px] text-[#f0f8ff] opacity-80">
         Ao infinito e além!✨
       </p>
+      <p className="mt-2 mb-0 text-[12px] text-[#f0f8ff] opacity-60">
+        Feito por: @catalog.digital
+      </p>
     </footer>
   );
 }
