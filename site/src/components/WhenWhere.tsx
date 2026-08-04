@@ -1,4 +1,4 @@
-const MAPS_URL = 'https://maps.google.com/?q=Endere%C3%A7o%20do%20evento%20Arthur';
+const MAPS_URL = 'https://www.google.com/maps/place/Jardino+Passeio+Kennedy+%7C+Moura+Dubeux/@-3.7314411,-38.5674799,17z/data=!3m1!4b1!4m6!3m5!1s0x7c7490066f88a9d:0xe0859697a6ffe0e!8m2!3d-3.7314411!4d-38.5674799!16s%2Fg%2F11y6qz9172!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3Dhttps://maps.app.goo.gl/8LeSdyYNpETyqJXZ8?g_st=iw';
 
 export function WhenWhere() {
   return (
@@ -23,7 +23,7 @@ export function WhenWhere() {
           </div>
           <div>
             <div className="font-[Fredoka] text-xl font-semibold text-[#4a2e17]">Sábado, 12 de setembro</div>
-            <div className="text-[15px] font-bold text-[#8a6a44]">de 2026 · às 16h</div>
+            <div className="text-[15px] font-bold text-[#8a6a44]">de 2026 · às 15h30</div>
           </div>
         </div>
 
@@ -48,9 +48,9 @@ export function WhenWhere() {
             </div>
           </div>
           <div>
-            <div className="font-[Fredoka] text-[19px] font-semibold text-[#4a2e17]">[Nome do Local]</div>
+            <div className="font-[Fredoka] text-[19px] font-semibold text-[#4a2e17]">Jardino Passeio Kennedy Salão de festas (Torre A)</div>
             <div className="mt-0.5 text-sm leading-[1.4] text-[#8a6a44]">
-              [Endereço completo do evento — rua, número, bairro e cidade]
+              Av. Cearenses, 65 - Presidente Kennedy, Fortaleza - CE, 60355-504
             </div>
           </div>
         </div>

@@ -73,16 +73,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
 
       {/* toy sign header */}
       <div className="relative pt-2 text-center pb-18">
-        <div
-          className="inline-block rounded-[40px] px-5 py-1.75 font-[Fredoka] text-[13px] font-semibold tracking-[2px] text-[#fff5df] uppercase"
-          style={{
-            background: "#e0503a",
-            boxShadow: "0 4px 0 #a83322",
-            animation: "rise .6s ease both",
-          }}
-        >
-          Você foi convidado
-        </div>
+        
 
         <h1
           className="m-0 mt-2.5 font-[Fredoka] text-[82px] leading-[.92] font-bold text-[#fbf3e2]"
@@ -134,7 +125,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
             <img
               src={foguete}
               alt="Foguete"
-              className="block h-24 w-auto select-none"
+              className="block h-20 w-20 select-none"
               style={{
                 mixBlendMode: "multiply",
                 filter: "drop-shadow(0 6px 8px rgba(0,0,0,.25))",
@@ -159,7 +150,7 @@ export function Hero({ countdown }: { countdown: Countdown }) {
             <img
               src={arthurPersonagem}
               alt="Arthur cowboy"
-              className="block h-96 w-auto select-none"
+              className="block h-96 w-auto select-none scale-x-125 sm:scale-x-100"
               draggable={false}
             />
           </div>
