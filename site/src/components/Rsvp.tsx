@@ -165,13 +165,6 @@ export function Rsvp() {
                 <p className="mt-1.5 mb-0 text-sm text-[#8a6a44]">{filledCompanionNames.join(', ')}</p>
               )}
               <p className="mt-3.5 mb-0 text-[15px] text-[#8a6a44]">Até dia 12 de setembro! 🚀</p>
-              <button
-                type="button"
-                onClick={() => setConfirmed(false)}
-                className="mt-5 cursor-pointer border-0 bg-transparent px-4 py-2 font-[Fredoka] text-[15px] font-semibold text-[#3f8fd0] underline"
-              >
-                Editar confirmação
-              </button>
             </div>
             <div className="pointer-events-none absolute inset-0 z-[1]">
               {confetti.map((c, i) => (

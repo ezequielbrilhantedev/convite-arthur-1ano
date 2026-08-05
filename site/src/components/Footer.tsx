@@ -33,6 +33,9 @@ export function Footer() {
       <p className="mt-4 mb-0 text-[13px] text-[#f0f8ff] opacity-80">
         Ao infinito e além!✨
       </p>
+      <p className="mt-4 mb-0 text-[13px] text-[#f0f8ff] opacity-80">
+        Feito por: <a href="https://www.instagram.com/catalog.digital/" target="_blank" rel="noopener noreferrer" className="text-[#f0f8ff] underline">@catalog.digital</a> | <a href="https://catalogdigital.com.br" target="_blank" rel="noopener noreferrer" className="text-[#f0f8ff] underline">www.catalogdigital.com.br</a>
+      </p>
     </footer>
   );
 }
