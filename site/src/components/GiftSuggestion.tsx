@@ -4,7 +4,7 @@ const PIX_KEY = '616.587.213-14';
 
 const GIFT_IDEAS: Array<{ icon: string; bg: string; title: string; desc: string }> = [
   { icon: '👕', bg: '#3f8fd0', title: 'Roupa', desc: 'TM 2 anos' },
-  { icon: '👟', bg: '#f4b93b', title: 'Sapato ou sandália', desc: 'TM 20' },
+  { icon: '👟', bg: '#f4b93b', title: 'Sapato ou chinelo', desc: 'TM 21' },
   {
     icon: '🧴',
     bg: '#e0503a',
